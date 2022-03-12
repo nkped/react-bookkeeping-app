@@ -1009,17 +1009,76 @@ var _reactDom = require("react-dom");
 var _reactRouterDom = require("react-router-dom");
 var _app = require("./App");
 var _appDefault = parcelHelpers.interopDefault(_app);
+var _expenses = require("./routes/Expenses");
+var _expensesDefault = parcelHelpers.interopDefault(_expenses);
+var _invoices = require("./routes/Invoices");
+var _invoicesDefault = parcelHelpers.interopDefault(_invoices);
+var _invoice = require("./routes/Invoice");
+var _invoiceDefault = parcelHelpers.interopDefault(_invoice);
 const rootElement = document.getElementById("root");
 _reactDom.render(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.BrowserRouter, {
-    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_appDefault.default, {
+    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Routes, {
+        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
+            path: "/",
+            element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_appDefault.default, {
+            }, void 0, false, void 0, void 0),
+            children: [
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
+                    path: "expenses",
+                    element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_expensesDefault.default, {
+                    }, void 0, false, void 0, void 0)
+                }, void 0, false, {
+                    fileName: "src/index.js",
+                    lineNumber: 13,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
+                    path: "invoices",
+                    element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_invoicesDefault.default, {
+                    }, void 0, false, void 0, void 0),
+                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
+                        path: ":invoiceId",
+                        element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_invoiceDefault.default, {
+                        }, void 0, false, void 0, void 0)
+                    }, void 0, false, {
+                        fileName: "src/index.js",
+                        lineNumber: 15,
+                        columnNumber: 11
+                    }, undefined)
+                }, void 0, false, {
+                    fileName: "src/index.js",
+                    lineNumber: 14,
+                    columnNumber: 9
+                }, undefined),
+                /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
+                    path: "*",
+                    element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("main", {
+                        style: {
+                            padding: "1rem"
+                        },
+                        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("p", {
+                            children: "There's nothing here!"
+                        }, void 0, false, void 0, void 0)
+                    }, void 0, false, void 0, void 0)
+                }, void 0, false, {
+                    fileName: "src/index.js",
+                    lineNumber: 17,
+                    columnNumber: 9
+                }, undefined)
+            ]
+        }, void 0, true, {
+            fileName: "src/index.js",
+            lineNumber: 12,
+            columnNumber: 7
+        }, undefined)
     }, void 0, false, {
         fileName: "src/index.js",
-        lineNumber: 8,
+        lineNumber: 11,
         columnNumber: 5
     }, undefined)
 }, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 7,
+    lineNumber: 10,
     columnNumber: 3
 }, undefined), rootElement);
 
@@ -1028,7 +1087,7 @@ _reactDom.render(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.BrowserRout
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom":"j6uA9","./App":"2kQhy","@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dmHgh","react-router-dom":"fdOAw"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom":"j6uA9","./App":"2kQhy","@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dmHgh","react-router-dom":"fdOAw","./routes/Expenses":"4JI52","./routes/Invoices":"bXE49","./routes/Invoice":"jBzMH"}],"iTorj":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react-jsx-dev-runtime.development.js');
 
@@ -22824,6 +22883,12 @@ function App() {
                 fileName: "src/App.js",
                 lineNumber: 8,
                 columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Outlet, {
+            }, void 0, false, {
+                fileName: "src/App.js",
+                lineNumber: 17,
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
@@ -24826,6 +24891,210 @@ const normalizeSearch = (search)=>!search || search === "?" ? "" : search.starts
 const normalizeHash = (hash)=>!hash || hash === "#" ? "" : hash.startsWith("#") ? hash : "#" + hash
 ; ///////////////////////////////////////////////////////////////////////////////
 
-},{"react":"21dqq","history":"iE5Zp","@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ"}]},["b7QXa","gFIUK","8lqZg"], "8lqZg", "parcelRequire21be")
+},{"react":"21dqq","history":"iE5Zp","@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ"}],"4JI52":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$df17 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$df17.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+function Expenses() {
+    return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("main", {
+        style: {
+            padding: "1rem 0"
+        },
+        children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h2", {
+            children: "Expenses"
+        }, void 0, false, {
+            fileName: "src/routes/Expenses.js",
+            lineNumber: 6,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "src/routes/Expenses.js",
+        lineNumber: 5,
+        columnNumber: 5
+    }, this));
+}
+exports.default = Expenses;
+_c = Expenses;
+var _c;
+$RefreshReg$(_c, "Expenses");
+
+  $parcel$ReactRefreshHelpers$df17.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dmHgh"}],"bXE49":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$2472 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$2472.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouterDom = require("react-router-dom");
+var _dataJs = require("../data.js");
+function Invoices() {
+    let invoices = _dataJs.getInvoices();
+    return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
+        style: {
+            display: "flex"
+        },
+        children: [
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("nav", {
+                style: {
+                    borderRight: "solid 1px",
+                    padding: "1rem"
+                },
+                children: invoices.map((invoice)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Link, {
+                        style: {
+                            display: "block",
+                            margin: "1rem 0"
+                        },
+                        to: `/invoices/${invoice.number}`,
+                        children: invoice.name
+                    }, invoice.number, false, {
+                        fileName: "src/routes/Invoices.js",
+                        lineNumber: 16,
+                        columnNumber: 11
+                    }, this)
+                )
+            }, void 0, false, {
+                fileName: "src/routes/Invoices.js",
+                lineNumber: 9,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Outlet, {
+            }, void 0, false, {
+                fileName: "src/routes/Invoices.js",
+                lineNumber: 25,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/routes/Invoices.js",
+        lineNumber: 8,
+        columnNumber: 5
+    }, this));
+}
+exports.default = Invoices;
+_c = Invoices;
+var _c;
+$RefreshReg$(_c, "Invoices");
+
+  $parcel$ReactRefreshHelpers$2472.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dmHgh","react-router-dom":"fdOAw","../data.js":"9kapS"}],"9kapS":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$03f0 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$03f0.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getInvoices", ()=>getInvoices
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+let invoices = [
+    {
+        name: "Santa Monica",
+        number: 1995,
+        amount: "$10,800",
+        due: "12/05/1995"
+    },
+    {
+        name: "Stankonia",
+        number: 2000,
+        amount: "$8,000",
+        due: "10/31/2000"
+    },
+    {
+        name: "Ocean Avenue",
+        number: 2003,
+        amount: "$9,500",
+        due: "07/22/2003"
+    },
+    {
+        name: "Tubthumper",
+        number: 1997,
+        amount: "$14,000",
+        due: "09/01/1997"
+    },
+    {
+        name: "Wide Open Spaces",
+        number: 1998,
+        amount: "$4,600",
+        due: "01/27/1998"
+    }, 
+];
+function getInvoices() {
+    return invoices;
+}
+
+  $parcel$ReactRefreshHelpers$03f0.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ","react":"21dqq","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dmHgh"}],"jBzMH":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$cfc8 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$cfc8.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouterDom = require("react-router-dom");
+var _s = $RefreshSig$();
+function Invoice() {
+    _s();
+    let params = _reactRouterDom.useParams();
+    return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("h2", {
+        children: [
+            "Invoice: ",
+            params.invoiceId
+        ]
+    }, void 0, true, {
+        fileName: "src/routes/Invoice.js",
+        lineNumber: 6,
+        columnNumber: 10
+    }, this));
+}
+exports.default = Invoice;
+_s(Invoice, "+jVsTcECDRo3yq2d7EQxlN9Ixog=", false, function() {
+    return [
+        _reactRouterDom.useParams
+    ];
+});
+_c = Invoice;
+var _c;
+$RefreshReg$(_c, "Invoice");
+
+  $parcel$ReactRefreshHelpers$cfc8.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dmHgh","react-router-dom":"fdOAw"}]},["b7QXa","gFIUK","8lqZg"], "8lqZg", "parcelRequire21be")
 
 //# sourceMappingURL=index.975ef6c8.js.map
