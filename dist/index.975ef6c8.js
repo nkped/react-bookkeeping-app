@@ -1036,16 +1036,33 @@ _reactDom.render(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.BrowserRout
                     path: "invoices",
                     element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_invoicesDefault.default, {
                     }, void 0, false, void 0, void 0),
-                    children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
-                        path: ":invoiceId",
-                        element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_invoiceDefault.default, {
-                        }, void 0, false, void 0, void 0)
-                    }, void 0, false, {
-                        fileName: "src/index.js",
-                        lineNumber: 15,
-                        columnNumber: 11
-                    }, undefined)
-                }, void 0, false, {
+                    children: [
+                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
+                            path: ":invoiceId",
+                            element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_invoiceDefault.default, {
+                            }, void 0, false, void 0, void 0)
+                        }, void 0, false, {
+                            fileName: "src/index.js",
+                            lineNumber: 15,
+                            columnNumber: 11
+                        }, undefined),
+                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Route, {
+                            index: true,
+                            element: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("main", {
+                                style: {
+                                    padding: "1rem"
+                                },
+                                children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV("p", {
+                                    children: "Select an Invoice"
+                                }, void 0, false, void 0, void 0)
+                            }, void 0, false, void 0, void 0)
+                        }, void 0, false, {
+                            fileName: "src/index.js",
+                            lineNumber: 16,
+                            columnNumber: 11
+                        }, undefined)
+                    ]
+                }, void 0, true, {
                     fileName: "src/index.js",
                     lineNumber: 14,
                     columnNumber: 9
@@ -1062,7 +1079,7 @@ _reactDom.render(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.BrowserRout
                     }, void 0, false, void 0, void 0)
                 }, void 0, false, {
                     fileName: "src/index.js",
-                    lineNumber: 17,
+                    lineNumber: 25,
                     columnNumber: 9
                 }, undefined)
             ]
@@ -24945,8 +24962,11 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouterDom = require("react-router-dom");
 var _dataJs = require("../data.js");
+var _s = $RefreshSig$();
 function Invoices() {
+    _s();
     let invoices = _dataJs.getInvoices();
+    let [searchParams, setSearchParams] = _reactRouterDom.useSearchParams();
     return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
         style: {
             display: "flex"
@@ -24957,38 +24977,68 @@ function Invoices() {
                     borderRight: "solid 1px",
                     padding: "1rem"
                 },
-                children: invoices.map((invoice)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Link, {
-                        style: {
-                            display: "block",
-                            margin: "1rem 0"
-                        },
-                        to: `/invoices/${invoice.number}`,
-                        children: invoice.name
-                    }, invoice.number, false, {
+                children: [
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
+                        value: searchParams.get("filter") || "",
+                        onChange: (event)=>{
+                            let filter = event.target.value;
+                            if (filter) setSearchParams({
+                                filter
+                            });
+                            else setSearchParams({
+                            });
+                        }
+                    }, void 0, false, {
                         fileName: "src/routes/Invoices.js",
-                        lineNumber: 16,
-                        columnNumber: 11
-                    }, this)
-                )
-            }, void 0, false, {
+                        lineNumber: 17,
+                        columnNumber: 9
+                    }, this),
+                    invoices.filter((invoice)=>{
+                        let filter = searchParams.get("filter");
+                        if (!filter) return true;
+                        let name = invoice.name.toLowerCase();
+                        return name.startsWith(filter.toLowerCase());
+                    }).map((invoice)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.NavLink, {
+                            style: ({ isActive  })=>{
+                                return {
+                                    display: "block",
+                                    margin: "1rem 0",
+                                    color: isActive ? "red" : ""
+                                };
+                            },
+                            to: `/invoices/${invoice.number}`,
+                            children: invoice.name
+                        }, invoice.number, false, {
+                            fileName: "src/routes/Invoices.js",
+                            lineNumber: 37,
+                            columnNumber: 13
+                        }, this)
+                    )
+                ]
+            }, void 0, true, {
                 fileName: "src/routes/Invoices.js",
-                lineNumber: 9,
+                lineNumber: 11,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Outlet, {
             }, void 0, false, {
                 fileName: "src/routes/Invoices.js",
-                lineNumber: 25,
+                lineNumber: 52,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/routes/Invoices.js",
-        lineNumber: 8,
+        lineNumber: 10,
         columnNumber: 5
     }, this));
 }
 exports.default = Invoices;
+_s(Invoices, "/eCs5CB4FLGAVLeprHBYLwBGf/Q=", false, function() {
+    return [
+        _reactRouterDom.useSearchParams
+    ];
+});
 _c = Invoices;
 var _c;
 $RefreshReg$(_c, "Invoices");
@@ -25046,6 +25096,11 @@ let invoices = [
 function getInvoices() {
     return invoices;
 }
+function getInvoice(number) {
+    return invoices.find((invoice)=>invoice.number === number
+    );
+}
+exports.default = getInvoice;
 
   $parcel$ReactRefreshHelpers$03f0.postlude(module);
 } finally {
@@ -25065,19 +25120,54 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouterDom = require("react-router-dom");
+var _data = require("../data");
+var _dataDefault = parcelHelpers.interopDefault(_data);
 var _s = $RefreshSig$();
 function Invoice() {
     _s();
     let params = _reactRouterDom.useParams();
-    return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("h2", {
+    let invoice = _dataDefault.default(parseInt(params.invoiceId, 10));
+    return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("main", {
+        style: {
+            padding: "1rem"
+        },
         children: [
-            "Invoice: ",
-            params.invoiceId
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("h2", {
+                children: [
+                    "Total Due: ",
+                    invoice.amount
+                ]
+            }, void 0, true, {
+                fileName: "src/routes/Invoice.js",
+                lineNumber: 10,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("p", {
+                children: [
+                    invoice.name,
+                    ": ",
+                    invoice.number
+                ]
+            }, void 0, true, {
+                fileName: "src/routes/Invoice.js",
+                lineNumber: 11,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("p", {
+                children: [
+                    "Due Date: ",
+                    invoice.due
+                ]
+            }, void 0, true, {
+                fileName: "src/routes/Invoice.js",
+                lineNumber: 14,
+                columnNumber: 7
+            }, this)
         ]
     }, void 0, true, {
         fileName: "src/routes/Invoice.js",
-        lineNumber: 6,
-        columnNumber: 10
+        lineNumber: 9,
+        columnNumber: 5
     }, this));
 }
 exports.default = Invoice;
@@ -25095,6 +25185,6 @@ $RefreshReg$(_c, "Invoice");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dmHgh","react-router-dom":"fdOAw"}]},["b7QXa","gFIUK","8lqZg"], "8lqZg", "parcelRequire21be")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dmHgh","react-router-dom":"fdOAw","../data":"9kapS"}]},["b7QXa","gFIUK","8lqZg"], "8lqZg", "parcelRequire21be")
 
 //# sourceMappingURL=index.975ef6c8.js.map

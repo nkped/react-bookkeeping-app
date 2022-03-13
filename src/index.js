@@ -13,6 +13,14 @@ render(
         <Route path="expenses" element={<Expenses />} />
         <Route path="invoices" element={<Invoices />}>
           <Route path=":invoiceId" element={<Invoice />} />
+          <Route
+            index
+            element={
+              <main style={{ padding: "1rem" }}>
+                <p>Select an Invoice</p>
+              </main>
+            }
+          />
         </Route>
         <Route
           path="*"
