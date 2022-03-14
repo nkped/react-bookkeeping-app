@@ -3,6 +3,8 @@
 ## See tutorial from:
 https://reactrouter.com/docs/en/v6/getting-started/tutorial
 
+## A bookkeping app (using a fake data store) displays invoices in a searchable list (of links), that doubles as a dynamic navbar. App features a main content area displaying the active, selected invoice with delete-option. All done by React Routing - amazing..
+
 
 ## Contains
 Parcel build and React Router en masse. The tutorial covers:
