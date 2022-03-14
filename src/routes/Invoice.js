@@ -15,7 +15,7 @@ export default function Invoice() {
       </p>
       <p>Due Date: {invoice.due}</p>
       <p>
-        <button
+      <button
           onClick={() => {
             deleteInvoice(invoice.number);
             navigate("/invoices" + location.search);

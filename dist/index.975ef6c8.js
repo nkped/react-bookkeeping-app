@@ -24959,9 +24959,14 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _reactRouterDom = require("react-router-dom");
-var _data = require("../data");
+var _dataJs = require("../data.js");
+var _queryNavLinkJs = require("../QueryNavLink.js");
+var _queryNavLinkJsDefault = parcelHelpers.interopDefault(_queryNavLinkJs);
+var _s = $RefreshSig$();
 function Invoices() {
-    let invoices = _data.getInvoices();
+    _s();
+    let invoices = _dataJs.getInvoices();
+    let [searchParams, setSearchParams] = _reactRouterDom.useSearchParams();
     return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
         style: {
             display: "flex"
@@ -24972,41 +24977,68 @@ function Invoices() {
                     borderRight: "solid 1px",
                     padding: "1rem"
                 },
-                children: invoices.map((invoice)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.NavLink, {
-                        style: ({ isActive  })=>{
-                            return {
-                                display: "block",
-                                margin: "1rem 0",
-                                color: isActive ? "red" : ""
-                            };
-                        },
-                        to: `/invoices/${invoice.number}`,
-                        children: invoice.name
-                    }, invoice.number, false, {
+                children: [
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
+                        value: searchParams.get("filter") || "",
+                        onChange: (event)=>{
+                            let filter = event.target.value;
+                            if (filter) setSearchParams({
+                                filter
+                            });
+                            else setSearchParams({
+                            });
+                        }
+                    }, void 0, false, {
                         fileName: "src/routes/Invoices.js",
-                        lineNumber: 15,
-                        columnNumber: 11
-                    }, this)
-                )
-            }, void 0, false, {
+                        lineNumber: 18,
+                        columnNumber: 9
+                    }, this),
+                    invoices.filter((invoice)=>{
+                        let filter = searchParams.get("filter");
+                        if (!filter) return true;
+                        let name = invoice.name.toLowerCase();
+                        return name.startsWith(filter.toLowerCase());
+                    }).map((invoice)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_queryNavLinkJsDefault.default, {
+                            style: ({ isActive  })=>{
+                                return {
+                                    display: "block",
+                                    margin: "1rem 0",
+                                    color: isActive ? "red" : ""
+                                };
+                            },
+                            to: `/invoices/${invoice.number}`,
+                            children: invoice.name
+                        }, invoice.number, false, {
+                            fileName: "src/routes/Invoices.js",
+                            lineNumber: 38,
+                            columnNumber: 13
+                        }, this)
+                    )
+                ]
+            }, void 0, true, {
                 fileName: "src/routes/Invoices.js",
-                lineNumber: 8,
+                lineNumber: 12,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.Outlet, {
             }, void 0, false, {
                 fileName: "src/routes/Invoices.js",
-                lineNumber: 30,
+                lineNumber: 53,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/routes/Invoices.js",
-        lineNumber: 7,
+        lineNumber: 11,
         columnNumber: 5
     }, this));
 }
 exports.default = Invoices;
+_s(Invoices, "/eCs5CB4FLGAVLeprHBYLwBGf/Q=", false, function() {
+    return [
+        _reactRouterDom.useSearchParams
+    ];
+});
 _c = Invoices;
 var _c;
 $RefreshReg$(_c, "Invoices");
@@ -25016,9 +25048,15 @@ $RefreshReg$(_c, "Invoices");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"fdOAw","@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dmHgh","../data":"9kapS"}],"9kapS":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"fdOAw","@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dmHgh","../data.js":"9kapS","../QueryNavLink.js":"38nym"}],"9kapS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getInvoices", ()=>getInvoices
+);
+parcelHelpers.export(exports, "getInvoice", ()=>getInvoice
+);
+parcelHelpers.export(exports, "deleteInvoice", ()=>deleteInvoice
+);
 let invoices = [
     {
         name: "Santa Monica",
@@ -25054,19 +25092,55 @@ let invoices = [
 function getInvoices() {
     return invoices;
 }
-exports.default = getInvoices;
 function getInvoice(number) {
     return invoices.find((invoice)=>invoice.number === number
     );
 }
-exports.default = getInvoice;
 function deleteInvoice(number) {
     return invoices = invoices.filter((invoice)=>invoice.number !== number
     );
 }
-exports.default = deleteInvoice;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ"}],"jBzMH":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ"}],"38nym":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$4369 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$4369.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _reactRouterDom = require("react-router-dom");
+var _s = $RefreshSig$();
+function QueryNavLink({ to , ...props }) {
+    _s();
+    let location = _reactRouterDom.useLocation();
+    return(/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactRouterDom.NavLink, {
+        to: to + location.search,
+        ...props
+    }, void 0, false, {
+        fileName: "src/QueryNavLink.js",
+        lineNumber: 5,
+        columnNumber: 10
+    }, this));
+}
+exports.default = QueryNavLink;
+_s(QueryNavLink, "pkHmaVRPskBaU4tMJuJJpV42k1I=", false, function() {
+    return [
+        _reactRouterDom.useLocation
+    ];
+});
+_c = QueryNavLink;
+var _c;
+$RefreshReg$(_c, "QueryNavLink");
+
+  $parcel$ReactRefreshHelpers$4369.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"fdOAw","@parcel/transformer-js/src/esmodule-helpers.js":"fwiJJ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"dmHgh"}],"jBzMH":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$cfc8 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -25131,7 +25205,7 @@ function Invoice() {
                 }, void 0, false, {
                     fileName: "src/routes/Invoice.js",
                     lineNumber: 18,
-                    columnNumber: 9
+                    columnNumber: 7
                 }, this)
             }, void 0, false, {
                 fileName: "src/routes/Invoice.js",

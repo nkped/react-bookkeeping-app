@@ -33,19 +33,19 @@ let invoices = [
   },
 ];
 
-export default function getInvoices() {
+export function getInvoices() {
   return invoices;
 }
 
-export default function getInvoice(number) {
+export function getInvoice(number) {
   return invoices.find((invoice) => invoice.number === number);
 }
 
 
-export default function deleteInvoice(number) {
+export function deleteInvoice(number) {
   return(
     invoices = invoices.filter(
-  (invoice) => invoice.number !==number
-)
-);
+      (invoice) => invoice.number !==number
+      )
+      );
 }
