@@ -30,5 +30,7 @@ The app is bundled with Parcel instead of CRA. To do so on Linux Manjaro, simply
 - create appropriate files / folders in the project
 - parcel index.html, and ctrl + click on 1234 port-link to open dev-browser
 
+Resource on Parcel : https://www.youtube.com/watch?v=i5jMJwJB3sA
+
 
 
