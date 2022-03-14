@@ -1,4 +1,8 @@
-# react-bookkeeping-app (tutorial from) https://reactrouter.com/docs/en/v6/getting-started/tutorial
+# react-bookkeeping-app
+
+## See tutorial from:
+https://reactrouter.com/docs/en/v6/getting-started/tutorial
+
 
 ## Contains
 Parcel build and React Router en masse. The tutorial covers:
