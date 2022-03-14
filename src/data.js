@@ -1,4 +1,4 @@
-import React from "react";
+
 
 let invoices = [
   {
@@ -33,10 +33,19 @@ let invoices = [
   },
 ];
 
-export function getInvoices() {
+export default function getInvoices() {
   return invoices;
 }
 
 export default function getInvoice(number) {
   return invoices.find((invoice) => invoice.number === number);
+}
+
+
+export default function deleteInvoice(number) {
+  return(
+    invoices = invoices.filter(
+  (invoice) => invoice.number !==number
+)
+);
 }
